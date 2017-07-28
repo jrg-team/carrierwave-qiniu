@@ -55,6 +55,8 @@ module CarrierWave
           if resp_code < 200 or resp_code >= 300
             raise ::CarrierWave::UploadError, "Upload failed, status code: #{resp_code}, response: #{resp_body}"
           end
+          ::Qiniu::Log.logger.info resp_code
+          ::Qiniu::Log.logger.info resp_body
         end
 
         #
